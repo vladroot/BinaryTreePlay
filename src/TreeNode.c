@@ -3,6 +3,9 @@
 
 static void SwapTree(TreeNode *tree)
 {
+    if (tree == NULL)
+        return;
+
     RefStack stack = NULL;
 
     Stack_Push(&stack, tree);

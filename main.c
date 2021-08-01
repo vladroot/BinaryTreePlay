@@ -1,18 +1,12 @@
 #include <stdio.h>
 #include "src/TreeNode.h"
 
-int main(int argc, char **argv)
+void PrintTree(TreeNode *tree)
 {
-    printf("Reversing binary tree!\n");
-    TreeNode *base = new_TreeNode(1, NULL, NULL);
-    base->left = new_TreeNode(2, new_TreeNode(4, NULL, NULL), NULL);
-
-    base->right = new_TreeNode(3, new_TreeNode(5, NULL, NULL), new_TreeNode(6, NULL, NULL));
-
-    base->SwapTree(base);
-
     RefStack stack = NULL;
-    Stack_Push(&stack, base);
+    Stack_Push(&stack, tree);
+    // it prints in the wrong order for every other level
+    // althougth the data itself is correct
     while (stack != NULL)
     {
         RefStack innerStack = NULL;
@@ -30,6 +24,20 @@ int main(int argc, char **argv)
 
         printf("\n");
     }
+}
+
+int main(int argc, char **argv)
+{
+    printf("Reversing binary tree!\n");
+    TreeNode *base = new_TreeNode(1, NULL, NULL);
+    base->left = new_TreeNode(2, new_TreeNode(4, NULL, NULL), new_TreeNode(5, NULL, NULL));
+    base->right = new_TreeNode(3, new_TreeNode(6, NULL, NULL), new_TreeNode(7, NULL, NULL));
+
+    PrintTree(base);
+
+    base->SwapTree(base);
+
+    PrintTree(base);
 
     delete_TreeNode(base);
     return 0;
