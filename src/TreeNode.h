@@ -1,19 +1,21 @@
 #ifndef TREENODE_H
 #define TREENODE_H
 
-typedef struct TreeNode
+typedef struct TreeNode TreeNode;
+struct TreeNode
 {
     int value;
-    struct TreeNode *left;
-    struct TreeNode *right;
-    void (*SwapTree)(struct TreeNode *);
-} TreeNode;
+    TreeNode *left;
+    TreeNode *right;
+    void (*SwapTree)(TreeNode *);
+};
 
-typedef struct Stack
+typedef struct Stack Stack;
+struct Stack
 {
     TreeNode *node;
-    struct Stack *next;
-} Stack;
+    Stack *next;
+};
 
 typedef Stack *RefStack;
 
